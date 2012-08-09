@@ -24,6 +24,8 @@ test_len = 40;
 mean40 = mean(RMS_byfile(1:40));
 RMS_meansub = RMS_byfile - mean40;
 
+%Plotting AR
+
 ARmod(RMS_meansub, 1, 40);
 ARmod(RMS_meansub, 15, 40);
 
