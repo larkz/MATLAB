@@ -1,0 +1,43 @@
+function [RMS_data] = RMS_all(Resid4M, data_size, num_teeth)
+
+full_length = length(Resid4M); % 212505
+
+num_sample = floor(full_length/data_size); %136
+sample_size = floor(data_size/num_teeth); %22
+
+% Looping through each row, make 136 samples for each corresponding gear
+% teeth 1-46:
+
+
+    RMS_array = zeros( 2 ,num_sample);
+    RMS_array(1,:) = 1:num_sample;
+
+    all_RMS = cell(1,num_teeth);
+
+    for i = 1:70
+        all_RMS{i} = RMS_array;
+    end
+
+    test_data = Resid4M(:,r);
+    Re = reshape(test_data,data_size, num_sample);
+
+    for s = 1:num_sample %93
+
+        extract_data = Re(:,s);
+
+        for c = 1:num_teeth %70
+
+            RMS_val = myRMS(extract_data(sample_size*(c-1) + 1: sample_size*c ));
+            all_RMS{c}(2,s) = RMS_val;
+
+        end
+
+    end
+    
+
+
+for r = 1:num_rows
+    
+    full_RMS_data{r} = all_RMS;
+    
+end

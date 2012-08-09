@@ -1,0 +1,31 @@
+clear;
+clc;
+close all;
+
+SigDataCont = importdata('SigDataCont.mat');
+TSA_A02_Data = importdata('TSA_A02_60.mat');
+
+% figure('name', ' Raw Vibration Signal Data Collected until Failure (A02)', ... 
+%                 'units','normalized','position', [.03 .50  .93 .40]);
+% plot(SigDataCont, 'color', [0 0.1 0.5] );
+% ybounds = ylim;
+% hold on;
+% line([1.5e7,1.5e7],[ybounds(1),ybounds(2)], 'Color',[.01 .2 .01])
+
+title('Raw Vibration Signal Data Collected until Failure (A02)', 'FontWeight','bold');
+ylabel('Vibration Signal Amplitude'); 
+xlabel('Data #');
+
+figure('name', ' Compressed Data after Time Synchrounous Averaging (A02)', ... 
+                'units','normalized','position', [.03 .05  .93 .35]);
+plot(TSA_A02_Data, 'color', [0 0.5 1] );
+title('Compressed Data after Time Synchrounous Averaging (A02)', 'FontWeight','bold');
+ylabel('Vibration Signal Amplitude'); 
+xlabel('Data #');
+
+figure('name', ' Raw Vibration Signal Data Collected until Failure (A02)', ... 
+                'units','normalized','position', [.03 .50  .93 .40]);
+plot(SigDataCont, 'color', [1 0.1 0.5]);
+ybounds = ylim;
+hold on;
+line([1.5e7,1.5e7],[ybounds(1),ybounds(2)], 'Color',[.01 .2 .01]);
