@@ -1,9 +1,11 @@
-function [AR_pred] = ARmod( RMS_meansub, lag, test_len)
+function [AR_pred, arpoly] = ARmod( RMS_meansub, lag, test_len)
 
 
-ARy_ = aryule(RMS_meansub(1:40), lag);
+ARy_ = aryule(RMS_meansub(1:test_len), lag);
 ARy_ = ARy_*(-1);
 ARy = ARy_(2:length(ARy_));
+
+arpoly = ar(RMS_meansub(1:test_len), lag);
 
 for i = 1:length(RMS_meansub)-lag %AR lag:136
 
@@ -29,7 +31,7 @@ ylabel('Root Mean Square subtracted mean');
 xlabel('File number 41:136');
 
 hold on;
-xbounds = [40, 40];
+xbounds = [test_len, test_len];
 ylimit = ylim;
 hold on;
 line([xbounds(1), xbounds(2)],[ylimit(1), ylimit(2)], 'LineStyle', '--', 'Color', 'R', 'LineWidth',2);

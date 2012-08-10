@@ -40,9 +40,7 @@ figure('name', 'AIc values', 'units',...
                 'normalized','position',[.5 .47 .43 .43], 'color', 'w')
 aic_bar = bar(1:length(AIC_val), AIC_val);
 
-set(get(aic_bar,'BaseLine'),'LineWidth',2,'LineStyle',':')
-colormap summer
-
+set(aic_bar, 'CData', AIC_val);
 
 
 title('AIC Values');
